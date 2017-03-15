@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>https://www.antonioalaniz.com/</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/pages/about-me.html</loc>
+  <lastmod>2017-03-15T14:37:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/ive-moved.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/travis-ci-setup-with-django.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/elasticsearch-with-django.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/python.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/ruby.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/programming.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/django.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/continuous-integration.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.antonioalaniz.com/tag/elasticsearch.html</loc>
+  <lastmod>2017-03-15T14:37:52+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+</urlset>

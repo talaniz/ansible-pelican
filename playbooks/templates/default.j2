@@ -39,4 +39,7 @@ server {
         location ^~ /.well-known/acme-challenge {
                 allow all;
         }
+
+        location /sitemap.xml;
+                alias /var/www/antonioalaniz.com/output/sitemap.xml;
 }

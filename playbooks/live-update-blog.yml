@@ -32,6 +32,8 @@
         command: "{{pelican_env}}/bin/pelican {{web_root}}/content -o {{web_root}}/output -s {{web_root}}/publishconf.py"
         notify: restart nginx
 
+      - name: Copy sitemap
+        copy: src={{files_dir}}/sitemap.xml dest={{web_root}}/output/sitemap.xml
 
    handlers:
     - name: restart nginx
