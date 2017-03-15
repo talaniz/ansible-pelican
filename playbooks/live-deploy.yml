@@ -1,0 +1,30 @@
+ - name: Copy pelican configuration files
+   hosts: digitalocean
+   become: true
+   become_method: sudo
+
+   tasks:
+
+    - name: Copy edited pelicanconf.py
+      copy: src={{files_dir}}/pelicanconf.py dest={{web_root}}/pelicanconf.py
+
+    - name: Copy edited publishconf.py
+      template: src={{templates_dir}}/publishconf.py.j2 dest=/{{web_root}}/publishconf.py
+
+    - name: Create pelican blog content
+      command: "{{pelican_env}}/bin/pelican {{web_root}}/content -o {{web_root}}/output -s {{web_root}}/publishconf.py"
+      notify: restart nginx
+
+    - name: Register output folder variable
+      stat:
+        path: "{{web_root}}/output"
+      register: output
+
+    - name: Check that output folder exists
+      debug:
+        msg: "Path exists and is a directory"
+      when: output.stat.isdir is defined and output.stat.isdir
+
+   handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted

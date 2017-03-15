@@ -1,0 +1,38 @@
+ - name: Update pelican blog
+   hosts: testserver
+   become: true
+   become_method: sudo
+
+   tasks:
+
+      - name: Delete pelican content folder
+        file: path={{web_root}} state=absent
+
+      - name: Create home folder to serve blog
+        file: path={{web_root}} state=directory mode=0755
+
+      - name: Download my blog repo
+        git:
+          repo: "{{blog_repo}}"
+          dest: "{{web_root}}"
+          version: master
+
+      - name: Install project requirements
+        pip:
+          executable: "{{pelican_env}}/bin/pip"
+          requirements: "{{web_root}}/requirements.txt"
+
+      - name: Copy edited pelicanconf.py
+        copy: src={{files_dir}}/pelicanconf.py dest={{web_root}}/pelicanconf.py
+
+      - name: Copy edited publishconf.py
+        template: src={{templates_dir}}/publishconf.py.j2 dest=/{{web_root}}/publishconf.py
+
+      - name: Create pelican blog content
+        command: "{{pelican_env}}/bin/pelican {{web_root}}/content -o {{web_root}}/output -s {{web_root}}/publishconf.py"
+        notify: restart nginx
+
+
+   handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted

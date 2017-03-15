@@ -1,0 +1,28 @@
+---
+home_dir: /home/talaniz
+pelican_env: /home/talaniz/pelican
+pelican_themes: /home/talaniz/pelican-themes
+web_root: /var/www/antonioalaniz.com
+blog_repo: https://github.com/talaniz/antonioalaniz.com.git
+nginx: /etc/nginx
+blog_template_dir: /home/talaniz/pelican-themes/pelican-clean-blog/templates
+files_dir: ~/workspace/ansible-digitalocean/playbooks/files
+templates_dir: ~/workspace/ansible-digitalocean/playbooks/templates
+domain: 192.168.68.8.xip.io
+www_domain: www.192.168.68.8.xip.io
+access_ports:
+  - 80
+  - 443
+  - 22
+ssh_port: 22
+email: antonioalaniz@gmail.com
+ssl_cert: /etc/letsencrypt/live/www.192.168.68.8.xip.io/fullchain.pem
+ssl_cert_key: /etc/letsencrypt/live/www.192.168.68.8.xip.io/privkey.pem
+letsencrypt_email: antonio.alaniz@gmail.com
+letsencrypt_webroot: /var/www/antonioalaniz.com
+letsencrypt_fake_key: True
+letsencrypt_renew_by_default: --renew-by-default
+letsencrypt_domains:
+  - 192.168.68.8.xip.io
+  - www.192.168.68.8.xip.io
+google_analytics: UA-90628600-1

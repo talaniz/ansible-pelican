@@ -1,0 +1,36 @@
+ - name: Configure Vagrant machine for testing
+   hosts: dev
+   tasks:
+      - name: Create new group 'pelican'
+        group:
+          name: pelican
+          state: present
+        become: true
+        become_method: sudo
+
+      - name: Allow 'pelican' passwordless sudo
+        lineinfile:
+          dest: /etc/sudoers
+          state: present
+          regexp: '^%pelican'
+          line: '%pelican ALL=(ALL) NOPASSWD: ALL'
+        become: true
+        become_method: sudo
+
+      - name: Add new user to pelican group
+        user:
+            name: talaniz
+            shell: /bin/bash
+            groups: pelican
+            append: yes
+        with_items: talaniz
+        become: true
+        become_method: sudo
+
+      - name: Set authorized key for user talaniz from current user
+        authorized_key:
+          user: talaniz
+          state: present
+          key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
+        become: true
+        become_method: sudo

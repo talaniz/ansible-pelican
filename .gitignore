@@ -1,0 +1,5 @@
+.vagrant/*
+ansible-digitalocean.sublime-project
+ansible-digitalocean.sublime-workspace
+hosts
+playbooks/roles/*

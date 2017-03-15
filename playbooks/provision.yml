@@ -1,0 +1,13 @@
+- hosts: digitalocean
+  remote_user: talaniz
+  gather_facts: no
+  tasks:
+    - name: Update apt-get
+      apt: update_cache=yes
+      become: true
+      become_method: sudo
+
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+      become: true
+      become_method: sudo

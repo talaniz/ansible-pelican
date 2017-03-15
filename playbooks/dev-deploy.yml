@@ -1,0 +1,43 @@
+ - name: Deploy Pelican to Vagrant machine
+   hosts: testserver
+   become: true
+   become_method: sudo
+   roles:
+      - common-vagrant
+      - pelican-vagrant
+      - pelican-nginx
+      - wtanaka.certbot
+      - ansible-ufw
+
+   tasks:
+    - name: Check nginx.conf for syntax errors
+      command: nginx -t
+      register: nginx_syntax_check
+
+    - name: Restart nginx
+      service: name=nginx state=restarted
+      when: '"successful" in nginx_syntax_check.stderr'
+
+    - name: Copy edited pelicanconf.py
+      copy: src={{files_dir}}/pelicanconf.py dest={{web_root}}/pelicanconf.py
+
+    - name: Copy edited publishconf.py
+      copy: src={{files_dir}}/publishconf.py dest=/{{web_root}}/publishconf.py
+
+    - name: Create pelican blog content
+      command: "{{pelican_env}}/bin/pelican {{web_root}}/content -o {{web_root}}/output -s {{web_root}}/pelicanconf.py"
+      notify: restart nginx
+
+    - name: Register output folder variable
+      stat:
+        path: "{{web_root}}/output"
+      register: output
+
+    - name: Check that output folder exists
+      debug:
+        msg: "Path exists and is a directory"
+      when: output.stat.isdir is defined and output.stat.isdir
+
+   handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
